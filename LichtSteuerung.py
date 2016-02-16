@@ -40,37 +40,35 @@ class LichtSteuerung(Tk):
         self.__neubau1 = LichtObjekt(self, "Neubau 1", 7, self.__module1)
         self.__neubau1.place(x=0, y=150, width=400, height=25)
         
-        self.__objects = [self.__caffee, self.__stralat, self.__kirche,
-                          self.__flutlicht, self.__hammerschmiede, self.__2famhaus,
-                          self.__neubau1]
+        self.__objects = [self.__caffee, self.__stralat, self.__kirche, self.__flutlicht, self.__hammerschmiede, self.__2famhaus, self.__neubau1]
             
-                          Label(self, text="Spezielle Funktionen:").place(x=0, y=175, width=400, height=25)
-                          self.__alle = Frame(self)
-                          self.__alle.place(x=0, y=200, width=400, height=50)
-                          
-                          self.__alleAnButton = Button(self.__alle, text="Alle Anschalten", command=self.alleAn)
-                          self.__alleAnButton.place(x=0, y=0, width=200, height=25)
-                          
-                          self.__alleAusButton = Button(self.__alle, text="Alle Ausschalten", command=self.alleAus)
-                          self.__alleAusButton.place(x=200, y=0, width=200, height=25)
-                          
-                          self.__gottesdienstButton = Button(self.__alle, text="Gottesdienst", command=self.gottesdienst)
-                          self.__gottesdienstButton.place(x=0, y=25, width=200, height=25)
-                          
-                          self.__randomButton = Button(self.__alle, text="Zufaelliges Schalten", command=self.random)
-                          self.__randomButton.place(x=200, y=25, width=200, height=25)
+        Label(self, text="Spezielle Funktionen:").place(x=0, y=175, width=400, height=25)
+        self.__alle = Frame(self)
+        self.__alle.place(x=0, y=200, width=400, height=50)
+                        
+        self.__alleAnButton = Button(self.__alle, text="Alle Anschalten", command=self.alleAn)
+        self.__alleAnButton.place(x=0, y=0, width=200, height=25)
+                                
+        self.__alleAusButton = Button(self.__alle, text="Alle Ausschalten", command=self.alleAus)
+        self.__alleAusButton.place(x=200, y=0, width=200, height=25)
+                                        
+        self.__gottesdienstButton = Button(self.__alle, text="Gottesdienst", command=self.gottesdienst)
+        self.__gottesdienstButton.place(x=0, y=25, width=200, height=25)
+                                                
+        self.__randomButton = Button(self.__alle, text="Zufaelliges Schalten", command=self.random)
+        self.__randomButton.place(x=200, y=25, width=200, height=25)
 
-def alleAn(self):
-    for i in self.__objects:
-        i.switchOn()
-
+    def alleAn(self):
+        for i in self.__objects:
+            i.switchOn()
+    
     def alleAus(self):
         for i in self.__objects:
             i.switchOff()
 
-# Spezielle Programme zum Ablauf der Lichtsteuerung
-def gottesdienst(self):
-    self.__kirchenThread = DelayedShutdown(self.__kirche, 30)
+    # Spezielle Programme zum Ablauf der Lichtsteuerung
+    def gottesdienst(self):
+        self.__kirchenThread = DelayedShutdown(self.__kirche, 30)
         self.__kirchenThread.start()
     
     def random(self):
