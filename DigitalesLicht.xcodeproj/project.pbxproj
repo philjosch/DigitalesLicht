@@ -12,12 +12,14 @@
 		174B61CB1C73DD3E006BE72A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		174B61CC1C73DD3E006BE72A /* smbus.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = smbus.py; sourceTree = "<group>"; };
 		174B61CD1C73DD3E006BE72A /* Steuerung.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = Steuerung.py; sourceTree = "<group>"; };
+		174B61CE1C73DEA6006BE72A /* main.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = main.py; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
 		174B61B91C73DC57006BE72A = {
 			isa = PBXGroup;
 			children = (
+				174B61CE1C73DEA6006BE72A /* main.py */,
 				174B61CA1C73DD3E006BE72A /* Objekte.py */,
 				174B61CB1C73DD3E006BE72A /* README.md */,
 				174B61CC1C73DD3E006BE72A /* smbus.py */,
@@ -188,6 +190,7 @@
 				174B61C31C73DC57006BE72A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
