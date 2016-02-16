@@ -65,6 +65,7 @@ class ComplexLichtObjekt(LichtObjekt):
             self.switchOn()
 
     def switchOn(self):
+        ## Hier muss alles erneutert werden
         if (not self._on):
             self._module.switchOn(self._port)
             self._Label.config(bg=self.COLOR_WAITING)
@@ -76,6 +77,7 @@ class ComplexLichtObjekt(LichtObjekt):
             self._on = True
 
     def switchOff(self):
+        # Hier muss alles erneutert werden
         if (self._on):
             self._module.switchOff(self._port2)
             self._Label.config(bg=self.COLOR_WAITING)
