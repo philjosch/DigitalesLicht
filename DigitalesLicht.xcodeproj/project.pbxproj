@@ -6,10 +6,23 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXFileReference section */
+		174B61C91C73DCEC006BE72A /* LichtSteuerung.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = LichtSteuerung.py; sourceTree = "<group>"; };
+		174B61CA1C73DD3E006BE72A /* Objekte.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = Objekte.py; sourceTree = "<group>"; };
+		174B61CB1C73DD3E006BE72A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		174B61CC1C73DD3E006BE72A /* smbus.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = smbus.py; sourceTree = "<group>"; };
+		174B61CD1C73DD3E006BE72A /* Steuerung.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = Steuerung.py; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
 /* Begin PBXGroup section */
 		174B61B91C73DC57006BE72A = {
 			isa = PBXGroup;
 			children = (
+				174B61CA1C73DD3E006BE72A /* Objekte.py */,
+				174B61CB1C73DD3E006BE72A /* README.md */,
+				174B61CC1C73DD3E006BE72A /* smbus.py */,
+				174B61CD1C73DD3E006BE72A /* Steuerung.py */,
+				174B61C91C73DCEC006BE72A /* LichtSteuerung.py */,
 			);
 			sourceTree = "<group>";
 		};
