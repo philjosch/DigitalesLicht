@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		174B61C91C73DCEC006BE72A /* LichtSteuerung.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = LichtSteuerung.py; sourceTree = "<group>"; };
-		174B61CA1C73DD3E006BE72A /* Objekte.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = Objekte.py; sourceTree = "<group>"; };
-		174B61CB1C73DD3E006BE72A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		174B61CC1C73DD3E006BE72A /* smbus.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = smbus.py; sourceTree = "<group>"; };
-		174B61CD1C73DD3E006BE72A /* Steuerung.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = Steuerung.py; sourceTree = "<group>"; };
-		174B61CE1C73DEA6006BE72A /* main.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = main.py; sourceTree = "<group>"; };
+		174B61C91C73DCEC006BE72A /* LichtSteuerung.py */ = {isa = PBXFileReference; explicitFileType = text.script.python; fileEncoding = 4; path = LichtSteuerung.py; sourceTree = "<group>"; };
+		174B61CA1C73DD3E006BE72A /* Objekte.py */ = {isa = PBXFileReference; explicitFileType = text.script.python; fileEncoding = 4; path = Objekte.py; sourceTree = "<group>"; };
+		174B61CC1C73DD3E006BE72A /* smbus.py */ = {isa = PBXFileReference; explicitFileType = text.script.python; fileEncoding = 4; path = smbus.py; sourceTree = "<group>"; };
+		174B61CD1C73DD3E006BE72A /* Steuerung.py */ = {isa = PBXFileReference; explicitFileType = text.script.python; fileEncoding = 4; path = Steuerung.py; sourceTree = "<group>"; };
+		174B61CE1C73DEA6006BE72A /* main.py */ = {isa = PBXFileReference; explicitFileType = text.script.python; fileEncoding = 4; path = main.py; sourceTree = "<group>"; };
+		174B61D21C73E40F006BE72A /* README.md */ = {isa = PBXFileReference; explicitFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -21,10 +21,10 @@
 			children = (
 				174B61CE1C73DEA6006BE72A /* main.py */,
 				174B61CA1C73DD3E006BE72A /* Objekte.py */,
-				174B61CB1C73DD3E006BE72A /* README.md */,
 				174B61CC1C73DD3E006BE72A /* smbus.py */,
 				174B61CD1C73DD3E006BE72A /* Steuerung.py */,
 				174B61C91C73DCEC006BE72A /* LichtSteuerung.py */,
+				174B61D21C73E40F006BE72A /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
