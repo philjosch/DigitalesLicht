@@ -1,4 +1,9 @@
-from tkinter import *
+## Adds Support for python 2.7
+try:
+    from tkinter import *
+except:
+    from Tkinter import *
+
 import time
 import threading
 
@@ -48,15 +53,12 @@ class LichtObjekt(Frame, threading.Thread):
 
 
 
-# Klasse fuer z.B. Strassenlaternen
-class ComplexLichtObjekt(LichtObjekt):
-    def __init__(self, master, text, port1, port2, delayOn, delayOff, module):
+class StralatLichtObjekt(LichtObjekt):
+    # Klasse fuer z.B. Strassenlaternen
+    def __init__(self, master, text, port1, port2, module):
         LichtObjekt.__init__(self, master, text, port1, module)
         self._port2 = port2
-        self._delayOn = delayOn
-        self._delayOff = delayOff
         self._Button.config(command=self.__pressed)
-
 
     def __pressed(self):
         if self._on:
@@ -65,32 +67,46 @@ class ComplexLichtObjekt(LichtObjekt):
             self.switchOn()
 
     def switchOn(self):
-        ## Hier muss alles erneutert werden
         if (not self._on):
+            ## Spezieller Ablauf, um die Straßenlaternen mit Flackern anzuschalten
+            ## Könnte man in Zukunft noch mit einem Thread realisieren, sodass es komplett autonom und randomisiert passiert
             self._module.switchOn(self._port)
-            self._Label.config(bg=self.COLOR_WAITING)
-            self._Button.config(text="Wird angeschaltet", state=DISABLED)
-            time.sleep(self._delayOn)
+            time.sleep(0.08)
+            self._module.switchOff(self._port)
+            time.sleep(0.12)
             self._module.switchOn(self._port2)
+            time.sleep(0.08)
+            self._module.switchOn(self._port)
+            self._module.switchOff(self._port2)
+            time.sleep(0.1)
+            self._module.switchOff(self._port)
+            time.sleep(0.05)
+            self._module.switchOn(self._port)
+            time.sleep(0.05)
+            self._module.switchOn(self._port2)
+            time.sleep(0.05)
+            self._module.switchOff(self._port)
+            time.sleep(0.05)
+            self._module.switchOn(self._port)
+            self._module.switchOff(self._port2)
+            time.sleep(0.05)
+            self._module.switchOn(self._port2)
+            time.sleep(0.1)
+            self._module.switchOff(self._port2)
+            time.sleep(0.05)
+            self._module.switchOn(self._port2)
+            
             self._Label.config(bg=self.COLOR_ENABLED)
             self._Button.config(text="Ausschalten", state=NORMAL)
             self._on = True
 
     def switchOff(self):
-        # Hier muss alles erneutert werden
         if (self._on):
             self._module.switchOff(self._port2)
-            self._Label.config(bg=self.COLOR_WAITING)
-            self._Button.config(text="Wird ausgeschaltet", state=DISABLED)
-            time.sleep(self._delayOff)
             self._module.switchOff(self._port)
             self._Label.config(bg=self.COLOR_DISABLED)
             self._Button.config(text="Anschalten", state=NORMAL)
             self._on = False
-
-class StralatLichtObjekt(LichtObjekt):
-    def __init__(self):
-        pass
 
 
 class DelayedShutdown(threading.Thread):
