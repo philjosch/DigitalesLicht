@@ -1,4 +1,4 @@
 from LichtSteuerung import *
 
-App = LichtSteuerung(0)
+App = LichtSteuerung(1)
 App.mainloop()
