@@ -22,7 +22,7 @@ class LichtSteuerung(Tk):
         self.__caffee = LichtObjekt(self, "Cafe", 0, self.__module1)
         self.__caffee.place(x=0, y=0, width=400, height=25)
         
-        self.__stralat = ComplexLichtObjekt(self, "Strassenlaternen", 1, 2, 0.1, 1, self.__module1)
+        self.__stralat = StralatLichtObjekt(self, "Strassenlaternen", 1, 2, self.__module1)
         self.__stralat.place(x=0, y=25, width=400, height=25)
         
         self.__kirche = LichtObjekt(self, "Kirche", 3, self.__module1)
@@ -69,7 +69,7 @@ class LichtSteuerung(Tk):
     
     def gottesdienst(self):
         # Spezielle Programme zum Ablauf der Lichtsteuerung
-        self.__kirchenThread = DelayedShutdown(self.__kirche, 30)
+        self.__kirchenThread = DelayedShutdown(self.__kirche, 10)
         self.__kirchenThread.start()
     
     def random(self):
@@ -81,6 +81,3 @@ class LichtSteuerung(Tk):
                     i.switchOff()
 
 
-if __name__ == "__main__":
-    App = LichtSteuerung(0)
-    App.mainloop()
