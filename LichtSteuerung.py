@@ -1,4 +1,8 @@
-from tkinter import *
+try:
+    from tkinter import *
+except:
+    from Tkinter import *
+
 from Steuerung import *
 from smbus import *
 from Objekte import *

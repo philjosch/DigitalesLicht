@@ -13,6 +13,7 @@
 		174B61CD1C73DD3E006BE72A /* Steuerung.py */ = {isa = PBXFileReference; explicitFileType = text.script.python; fileEncoding = 4; path = Steuerung.py; sourceTree = "<group>"; };
 		174B61CE1C73DEA6006BE72A /* main.py */ = {isa = PBXFileReference; explicitFileType = text.script.python; fileEncoding = 4; path = main.py; sourceTree = "<group>"; };
 		174B61D21C73E40F006BE72A /* README.md */ = {isa = PBXFileReference; explicitFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		17BF52301C74B71F002CA17C /* String-Test.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = "String-Test.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -25,6 +26,7 @@
 				174B61CD1C73DD3E006BE72A /* Steuerung.py */,
 				174B61C91C73DCEC006BE72A /* LichtSteuerung.py */,
 				174B61D21C73E40F006BE72A /* README.md */,
+				17BF52301C74B71F002CA17C /* String-Test.strings */,
 			);
 			sourceTree = "<group>";
 		};
@@ -63,7 +65,6 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 			);
 			mainGroup = 174B61B91C73DC57006BE72A;
 			projectDirPath = "";
