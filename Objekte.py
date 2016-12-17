@@ -7,6 +7,79 @@ except:
 import time
 import threading
 
+class Weiche(Frame):
+    DELAY = 0.05
+    def __init__(self, master, text, port1, port2, module):
+        Frame.__init__(self, master);
+        self._port1 = port1
+        self._port2 = port2
+        self.__buttonOben  = Button(self, text="X", command=self.__Oben)
+        self.__buttonOben.place(x=0, y=0, width=75, height=25)
+        Label(self, text=text).place(x=0, y=25, width=75, height=25)
+        self.__buttonUnten = Button(self, text="X", command=self.__Unten)
+        self.__buttonUnten.place(x=0, y=50, width=75, height=25)
+        self._module = module
+    def __Oben(self):
+        self._module.switchOn(self._port1)
+        time.sleep(self.DELAY)
+        self._module.switchOff(self._port1)
+    def __Unten(self):
+        self._module.switchOn(self._port2)
+        time.sleep(self.DELAY)
+        self._module.switchOff(self._port2)
+    def place(self, x, y):
+        Frame.place(self, x=x, y=y, width=75, height=75)
+
+
+class Taster(Frame):
+    DELAY = 1
+    def __init__(self, master, text, port1, module):
+        Frame.__init__(self, master);
+        self._port1 = port1
+        self.__buttonOben  = Button(self, text="X", command=self.__Oben)
+        self.__buttonOben.place(x=0, y=0, width=75, height=25)
+        Label(self, text=text).place(x=0, y=25, width=75, height=25)
+        self._module = module
+    def __Oben(self):
+        self._module.switchOn(self._port1)
+        time.sleep(self.DELAY)
+        self._module.switchOff(self._port1)
+    def place(self, x, y):
+        Frame.place(self, x=x, y=y, width=75, height=75)
+
+
+
+class DreiWegeWeiche(Frame):
+    DELAY = 0.25
+    def __init__(self, master, text, portL1, portL2, portR1, portR2, module):
+        Frame.__init__(self, master);
+        self._port1 = portL1
+        self._port2 = portL2
+        self._port3 = portR1
+        self._port4 = portR2
+        self.__buttonLinks = Button(self, text="X", command=self.__Links)
+        self.__buttonLinks.place(x=0, y=0, width=37, height=25)
+        self.__buttonRechts = Button(self, text="X", command=self.__Rechts)
+        self.__buttonRechts.place(x=37, y=0, width=38, height=25)
+        Label(self, text=text).place(x=0, y=25, width=75, height=25)
+        self.__buttonMitte = Button(self, text="X", command=self.__Mitte)
+        self.__buttonMitte.place(x=19, y=50, width=37, height=25)
+        self._module = module
+    def __Links(self):
+        self._module.switchOn(self._port1)
+        time.sleep(self.DELAY)
+        self._module.switchOff(self._port1)
+    def __Rechts(self):
+        self._module.switchOn(self._port1)
+        time.sleep(self.DELAY)
+        self._module.switchOff(self._port1)
+    def __Mitte(self):
+        self._module.switchOn(self._port1)
+        time.sleep(self.DELAY)
+        self._module.switchOff(self._port1)
+    def place(self, x, y):
+        Frame.place(self, x=x, y=y, width=75, height=75)
+
 # Klasse fuer einfache Objekte, Licht an- und ausschalten (Schalter)
 class LichtObjekt(Frame, threading.Thread):
     COLOR_DISABLED = "#fcc"
@@ -15,10 +88,10 @@ class LichtObjekt(Frame, threading.Thread):
     def __init__(self, master, text, port, module):
         Frame.__init__(self, master)
         threading.Thread.__init__(self)
-        self._Label = Label(self, text=text, anchor=E, bg=self.COLOR_DISABLED)
+        self._Label = Label(self, text=text, bg=self.COLOR_DISABLED)
         self._Label.place(x=0, y=0, width=200, height=25)
         self._Button = Button(self, text="Anschalten", command=self.__pressed)
-        self._Button.place(x=200, y=0, width=200, height=25)
+        self._Button.place(x=0, y=25, width=200, height=25)
         self._port = port
         self._on = False
         self._module = module
@@ -50,6 +123,9 @@ class LichtObjekt(Frame, threading.Thread):
 
     def enable(self):
         self._Button.config(state=NORMAL)
+
+    def place(self, x, y):
+        Frame.place(self, x=x, y=y, width=200, height=50)
 
 
 
