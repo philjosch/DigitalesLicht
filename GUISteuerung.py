@@ -1,3 +1,17 @@
+# -*- coding: utf-8 -*-
+
+# sz \u00df
+# AE \u00c4
+# ae \u00e4
+# OE \u00d6
+# oe \u00f6
+# UE \u00dc
+# ue \u00fc
+# EURO \u20ac
+# Prop \u2318
+# Shift \u21E7
+# Copy \u00a9
+
 try:
     from tkinter import *
 except:
@@ -13,7 +27,7 @@ class GUISteuerung(Tk):
         Tk.__init__(self)
         self.title("Lichtsteuerung fuer die Eisenbahn")
         
-        self.geometry("600x710")
+        self.geometry("600x465")
         
         self.__port = port
         self.__bus = SMBus(self.__port)
@@ -30,43 +44,49 @@ class GUISteuerung(Tk):
         
         ## Die Weichen
         self.__WeichenMain = Frame(self)
-        self.__WeichenMain.place(x=0, y=0, width=600, height=150)
-        Label(self.__WeichenMain, text="Weichen").place(x=0, y=0, width=200, height=25)
+        self.__WeichenMain.place(x=0, y=0, width=600, height=175)
+        Label(self.__WeichenMain, text="Weichen").place(x=0, y=0, width=100, height=25)
         
         self.__FrameWeichen = Frame(self.__WeichenMain)
-        self.__FrameWeichen.place(x=0, y=0, width=600, height=150)
+        self.__FrameWeichen.place(x=0, y=25, width=600, height=150)
+
+        ## Abstell
+        self.__AG = Weiche(self.__FrameWeichen, "Abstell", 6, 7, self.__module1)
+        self.__AG.place(150, 75)
+        ## W1
+        self.__W1 = Weiche(self.__FrameWeichen, "W1", 0, 1, self.__module2)
+        self.__W1.place(75, 75)
+        ## W2
+        self.__W2 = Weiche(self.__FrameWeichen, "W2", 2, 3, self.__module2)
+        self.__W2.place(0, 75)
+        ## Dreiwegeweiche
+        self.__DWW = DreiWegeWeiche(self.__FrameWeichen, "Dreiwegw", 4, 5, 6, 7, self.__module2)
+        self.__DWW.place(75, 0)
 
         ## Linksweiche
         self.__LW = Weiche(self.__FrameWeichen, "Links W.", 0, 1, self.__module1)
-        self.__LW.place(0, 0)
-        ## Linksweiche
-        self.__BH = Weiche(self.__FrameWeichen, "Bahnhof", 2, 3, self.__module1)
-        self.__BH.place(75, 0)
-        ## Linksweiche
+        self.__LW.place(250, 0)
+        ## Bahnhof
+        self.__BH = Weiche2(self.__FrameWeichen, "Bahnhof", 2, 3, 2, 3, self.__module1, self.__module3)
+        self.__BH.place(325, 0)
+        ## Uebergang
         self.__BUE = Weiche(self.__FrameWeichen, "Uebergang", 4, 5, self.__module1)
-        self.__BUE.place(150, 0)
-        ## Linksweiche
-        self.__AG = Weiche(self.__FrameWeichen, "Abstell", 6, 7, self.__module1)
-        self.__AG.place(400, 75)
-        ## Linksweiche
-        self.__W1 = Weiche(self.__FrameWeichen, "W1", 0, 1, self.__module2)
-        self.__W1.place(325, 75)
-        ## Linksweiche
-        self.__W2 = Weiche(self.__FrameWeichen, "W2", 2, 3, self.__module2)
-        self.__W2.place(250, 75)
-        ## Dreiwegeweiche
-        self.__LW = DreiWegeWeiche(self.__FrameWeichen, "Dreiwegw", 4, 5, 6, 7, self.__module2)
-        self.__LW.place(325, 0)
+        self.__BUE.place(400, 0)
+        
         ## Taster BH unten
         self.__TasterBHUnten = Taster(self.__FrameWeichen, "Bh Unten", 0, self.__module3)
-        self.__TasterBHUnten.place(0, 75)
+        self.__TasterBHUnten.place(250, 75)
         ## Taster BH Oben
         self.__TasterBHOben = Taster(self.__FrameWeichen, "Bh Oben", 1, self.__module3)
-        self.__TasterBHOben.place(75, 75)
-        
+        self.__TasterBHOben.place(325, 75)
+
+
+
+
+
         # Die Einzelnen Buttons zur Steuerung des Lichtes
         self.__LichtMain = Frame(self)
-        self.__LichtMain.place(x=0, y=150, width=600, height=560)
+        self.__LichtMain.place(x=0, y=175, width=600, height=285)
         Label(self.__LichtMain, text="Licht").place(x=0, y=0, width=200, height=25)
         ## Alles an
         self.__alleAnButton = Button(self.__LichtMain, text="Alle Anschalten", command=self.alleAn)
@@ -79,7 +99,7 @@ class GUISteuerung(Tk):
         self.__randomButton.place(x=400, y=25, width=200, height=25)
 
         self.__FrameLicht = Frame(self.__LichtMain)
-        self.__FrameLicht.place(x=0, y=60, width=600, height=500)
+        self.__FrameLicht.place(x=0, y=60, width=600, height=225)
         ## Hauptbahnhof
         self.__HBF = LichtObjekt(self.__FrameLicht, "Hauptbahnhof", 0, self.__module7)
         self.__HBF.place(0, 0)
@@ -91,78 +111,78 @@ class GUISteuerung(Tk):
         self.__stralat.place(400, 0)
         ## Kirche
         self.__kirche = LichtObjekt(self.__FrameLicht, "Kirche", 3, self.__module4)
-        self.__kirche.place(0, 50)
+        self.__kirche.place(0, 25)
         ## Flutlicht
         self.__flutlicht = LichtObjekt(self.__FrameLicht, "Flutlicht", 4, self.__module4)
-        self.__flutlicht.place(200, 50)
+        self.__flutlicht.place(200, 25)
         ## Gottesdienst
         self.__gottesdienstButton = Button(self.__FrameLicht, text="Gottesdienst", command=self.gottesdienst)
-        self.__gottesdienstButton.place(x=400, y=62, width=200, height=25)
+        self.__gottesdienstButton.place(x=400, y=25, width=200, height=25)
         ## Baeckerei
         self.__baeckerei = LichtObjekt(self.__FrameLicht, "Baeckerei", 3, self.__module5)
-        self.__baeckerei.place(0, 100)
+        self.__baeckerei.place(0, 50)
         ## Wirtschaft
         self.__wirtschaft = LichtObjekt(self.__FrameLicht, "Wirtschaft", 4, self.__module5)
-        self.__wirtschaft.place(200, 100)
+        self.__wirtschaft.place(200, 50)
         ## Haus 1
         self.__haus1 = LichtObjekt(self.__FrameLicht, "Haus 1", 5, self.__module5)
-        self.__haus1.place(400, 100)
+        self.__haus1.place(400, 50)
         ## Haus 2
         self.__haus2 = LichtObjekt(self.__FrameLicht, "Haus 2", 6, self.__module5)
-        self.__haus2.place(0, 150)
+        self.__haus2.place(0, 75)
         ## Haus 3
         self.__haus3 = LichtObjekt(self.__FrameLicht, "Haus 3", 7, self.__module5)
-        self.__haus3.place(200, 150)
+        self.__haus3.place(200, 75)
         ## Haus 4
         self.__haus4 = LichtObjekt(self.__FrameLicht, "Haus 4", 0, self.__module6)
-        self.__haus4.place(400, 150)
+        self.__haus4.place(400, 75)
         ## Haus 5
         self.__haus5 = LichtObjekt(self.__FrameLicht, "Haus 5", 1, self.__module6)
-        self.__haus5.place(0, 200)
+        self.__haus5.place(0, 100)
         ## Haus 6
         self.__haus6 = LichtObjekt(self.__FrameLicht, "Haus 6", 2, self.__module6)
-        self.__haus6.place(200, 200)
+        self.__haus6.place(200, 100)
         ## Haus 7
         self.__haus7 = LichtObjekt(self.__FrameLicht, "Haus 7", 3, self.__module6)
-        self.__haus7.place(400, 200)
+        self.__haus7.place(400, 100)
         ## Haus 8
         self.__haus8 = LichtObjekt(self.__FrameLicht, "Haus 8", 4, self.__module6)
-        self.__haus8.place(0, 250)
+        self.__haus8.place(0, 125)
         ## Haus 9
         self.__haus9 = LichtObjekt(self.__FrameLicht, "Haus 9", 5, self.__module6)
-        self.__haus9.place(200, 250)
+        self.__haus9.place(200, 125)
         ## Metzgerei
         self.__metzgerei = LichtObjekt(self.__FrameLicht, "Metzgerei", 6, self.__module6)
-        self.__metzgerei.place(400, 250)
+        self.__metzgerei.place(400, 125)
         ## Haus 10
         self.__haus10 = LichtObjekt(self.__FrameLicht, "Haus 10", 7, self.__module6)
-        self.__haus10.place(0, 300)
+        self.__haus10.place(0, 150)
         ## Cafe
         self.__cafe = LichtObjekt(self.__FrameLicht, "Cafe", 0, self.__module4)
-        self.__cafe.place(200, 300)
+        self.__cafe.place(200, 150)
         ## Hammerschmiede
         self.__hammerschmiede = LichtObjekt(self.__FrameLicht, "Hammerschmiede", 5, self.__module4)
-        self.__hammerschmiede.place(0, 350)
+        self.__hammerschmiede.place(0, 175)
         ## Stellwerk
         self.__stellwerk = LichtObjekt(self.__FrameLicht, "Stellwerk", 1, self.__module5)
-        self.__stellwerk.place(200, 350)
+        self.__stellwerk.place(200, 175)
         ## Lokschuppen
         self.__lokschuppen = LichtObjekt(self.__FrameLicht, "Lokschuppen", 2, self.__module5)
-        self.__lokschuppen.place(400, 350)
+        self.__lokschuppen.place(400, 175)
         ## 2 Fam haus
         self.__2famhaus = LichtObjekt(self.__FrameLicht, "2-Familienhaus", 6, self.__module4)
-        self.__2famhaus.place(0, 400)
+        self.__2famhaus.place(0, 200)
         ## Neubau 1
         self.__neubau1 = LichtObjekt(self.__FrameLicht, "Neubau 1", 7, self.__module4)
-        self.__neubau1.place(200, 400)
+        self.__neubau1.place(200, 200)
         ## Bauernhof
         self.__bauernhof = LichtObjekt(self.__FrameLicht, "Bauernhof", 0, self.__module4)
-        self.__bauernhof.place(400, 400)
+        self.__bauernhof.place(400, 200)
         
-        self.__objects = [self.__cafe, self.__stralat, self.__kirche, self.__flutlicht, self.__hammerschmiede, self.__2famhaus, self.__neubau1,
+        self.__objects = [self.__cafe, self.__kirche, self.__flutlicht, self.__hammerschmiede, self.__2famhaus, self.__neubau1,
                           self.__bauernhof, self.__stellwerk, self.__lokschuppen, self.__baeckerei, self.__wirtschaft, self.__haus1, self.__haus2, self.__haus3,
                           self.__haus4, self.__haus5, self.__haus6, self.__haus7, self.__haus8, self.__haus9, self.__metzgerei, self.__haus10,
-                          self.__HBF, self.__BhS]
+                          self.__HBF, self.__BhS, self.__stralat]
     
         self.__noRandom = [self.__stralat, self.__HBF, self.__BhS]
 
