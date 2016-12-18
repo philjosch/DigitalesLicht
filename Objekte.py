@@ -144,8 +144,8 @@ class StralatLichtObjekt(LichtObjekt):
 
     def switchOn(self):
         if (not self._on):
-            ## Spezieller Ablauf, um die Straßenlaternen mit Flackern anzuschalten
-            ## Könnte man in Zukunft noch mit einem Thread realisieren, sodass es komplett autonom und randomisiert passiert
+            ## Spezieller Ablauf, um die Strassenlaternen mit Flackern anzuschalten
+            ## Koennte man in Zukunft noch mit einem Thread realisieren, sodass es komplett autonom und randomisiert passiert
             self._module.switchOn(self._port)
             time.sleep(0.08)
             self._module.switchOff(self._port)

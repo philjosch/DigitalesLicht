@@ -11,7 +11,7 @@ import random
 class GUISteuerung(Tk):
     def __init__(self, port):
         Tk.__init__(self)
-        self.title("Lichtsteuerung für die Eisenbahn")
+        self.title("Lichtsteuerung fuer die Eisenbahn")
         
         self.geometry("600x710")
         
@@ -43,7 +43,7 @@ class GUISteuerung(Tk):
         self.__BH = Weiche(self.__FrameWeichen, "Bahnhof", 2, 3, self.__module1)
         self.__BH.place(75, 0)
         ## Linksweiche
-        self.__BUE = Weiche(self.__FrameWeichen, "Übergang", 4, 5, self.__module1)
+        self.__BUE = Weiche(self.__FrameWeichen, "Uebergang", 4, 5, self.__module1)
         self.__BUE.place(150, 0)
         ## Linksweiche
         self.__AG = Weiche(self.__FrameWeichen, "Abstell", 6, 7, self.__module1)
@@ -74,7 +74,7 @@ class GUISteuerung(Tk):
         ## Alles Aus
         self.__alleAusButton = Button(self.__LichtMain, text="Alle Ausschalten", command=self.alleAus)
         self.__alleAusButton.place(x=200, y=25, width=200, height=25)
-        ## Alle Zufällig
+        ## Alle Zufaellig
         self.__randomButton = Button(self.__LichtMain, text="Zufaelliges Schalten", command=self.random)
         self.__randomButton.place(x=400, y=25, width=200, height=25)
 
@@ -83,10 +83,10 @@ class GUISteuerung(Tk):
         ## Hauptbahnhof
         self.__HBF = LichtObjekt(self.__FrameLicht, "Hauptbahnhof", 0, self.__module7)
         self.__HBF.place(0, 0)
-        ## Süd-Bahnhof
-        self.__BhS = LichtObjekt(self.__FrameLicht, "Süd-Bahnhof", 1, self.__module7)
+        ## Sued-Bahnhof
+        self.__BhS = LichtObjekt(self.__FrameLicht, "Sued-Bahnhof", 1, self.__module7)
         self.__BhS.place(200, 0)
-        ## Straßenlaterne
+        ## Strassenlaterne
         self.__stralat = StralatLichtObjekt(self.__FrameLicht, "Strassenlaternen", 1, 2, self.__module4)
         self.__stralat.place(400, 0)
         ## Kirche
@@ -98,8 +98,8 @@ class GUISteuerung(Tk):
         ## Gottesdienst
         self.__gottesdienstButton = Button(self.__FrameLicht, text="Gottesdienst", command=self.gottesdienst)
         self.__gottesdienstButton.place(x=400, y=62, width=200, height=25)
-        ## Bäckerei
-        self.__baeckerei = LichtObjekt(self.__FrameLicht, "Bäckerei", 3, self.__module5)
+        ## Baeckerei
+        self.__baeckerei = LichtObjekt(self.__FrameLicht, "Baeckerei", 3, self.__module5)
         self.__baeckerei.place(0, 100)
         ## Wirtschaft
         self.__wirtschaft = LichtObjekt(self.__FrameLicht, "Wirtschaft", 4, self.__module5)
