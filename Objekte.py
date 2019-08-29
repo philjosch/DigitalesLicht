@@ -36,13 +36,13 @@ class Weiche(Frame):
 
 class Weiche2(Frame):
     DELAY = 0.05
-    def __init__(self, master, text, port11, port21, port21, port22, module1, module2):
+    def __init__(self, master, text, port11, port12, port21, port22, module1, module2):
         Frame.__init__(self, master, bg="black");
         self._port11 = port11
         self._port12 = port12
         self._port21 = port21
         self._port22 = port22
-        self._module1 = module2
+        self._module1 = module1
         self._module2 = module2
         Label(self, text=text).place(x=1, y=1, width=73, height=24)
         self.__buttonOben  = Button(self, text="O", command=self.__Oben)
@@ -50,11 +50,11 @@ class Weiche2(Frame):
         self.__buttonUnten = Button(self, text="O", command=self.__Unten)
         self.__buttonUnten.place(x=1, y=50, width=73, height=24)
     def __Oben(self):
-        self._module1.switchOn(self._port21)
+        self._module1.switchOn(self._port12)
         self._module2.switchOn(self._port22)
         time.sleep(self.DELAY)
-        self._module1.switchOff(self._port21)
-        self._module2.switchOn(self._port22)
+        self._module1.switchOff(self._port12)
+        self._module2.switchOff(self._port22)
         self.__buttonOben.config(text="X")
         self.__buttonUnten.config(text="O")
     def __Unten(self):
@@ -62,7 +62,7 @@ class Weiche2(Frame):
         self._module2.switchOn(self._port21)
         time.sleep(self.DELAY)
         self._module1.switchOff(self._port11)
-        self._module2.switchOn(self._port21)
+        self._module2.switchOff(self._port21)
         self.__buttonOben.config(text="O")
         self.__buttonUnten.config(text="X")
     def place(self, x, y):
@@ -70,7 +70,7 @@ class Weiche2(Frame):
 
 
 class Taster(Frame):
-    DELAY = 0.5
+    DELAY = 0.25
     def __init__(self, master, text, port1, module):
         Frame.__init__(self, master, bg="black");
         self._port1 = port1
@@ -89,7 +89,7 @@ class Taster(Frame):
 
 
 class DreiWegeWeiche(Frame):
-    DELAY = 0.25
+    DELAY = 0.05
     def __init__(self, master, text, portL1, portL2, portR1, portR2, module):
         Frame.__init__(self, master, bg="black");
         self._port1 = portL1
@@ -107,25 +107,28 @@ class DreiWegeWeiche(Frame):
         self.__labelRichtung.place(x=1,y=50, width=73, height=24)
         self._module = module
     def __Links(self):
-        self._module.switchOn(self._port1)
         self._module.switchOn(self._port3)
         time.sleep(self.DELAY)
-        self._module.switchOff(self._port1)
-        self._module.switchOn(self._port3)
+        self._module.switchOff(self._port3)
+        self._module.switchOn(self._port2)
+        time.sleep(self.DELAY)
+        self._module.switchOff(self._port2)
         self.__labelRichtung.config(text="\\ \\       ")
     def __Rechts(self):
-        self._module.switchOn(self._port2)
+        self._module.switchOn(self._port1)
+        time.sleep(self.DELAY)
+        self._module.switchOff(self._port1)
         self._module.switchOn(self._port4)
         time.sleep(self.DELAY)
-        self._module.switchOn(self._port2)
         self._module.switchOff(self._port4)
         self.__labelRichtung.config(text="       / /")
     def __Mitte(self):
         self._module.switchOn(self._port1)
-        self._module.switchOn(self._port4)
         time.sleep(self.DELAY)
-        self._module.switchOn(self._port1)
-        self._module.switchOff(self._port4)
+        self._module.switchOff(self._port1)
+        self._module.switchOn(self._port3)
+        time.sleep(self.DELAY)
+        self._module.switchOff(self._port3)
         self.__labelRichtung.config(text="| |")
 
 
@@ -222,16 +225,14 @@ class StralatLichtObjekt(LichtObjekt):
             time.sleep(0.05)
             self._module.switchOn(self._port2)
             
-            self._Label.config(bg=self.COLOR_ENABLED)
-            self._Button.config(text="Ausschalten", state=NORMAL)
+            self._Label.config(bg=self.COLOR_ENABLED, text="An")
             self._on = True
 
     def switchOff(self):
         if (self._on):
             self._module.switchOff(self._port2)
             self._module.switchOff(self._port)
-            self._Label.config(bg=self.COLOR_DISABLED)
-            self._Button.config(text="Anschalten", state=NORMAL)
+            self._Label.config(bg=self.COLOR_DISABLED, text="Aus")
             self._on = False
 
 

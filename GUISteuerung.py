@@ -67,7 +67,7 @@ class GUISteuerung(Tk):
         self.__LW = Weiche(self.__FrameWeichen, "Links W.", 0, 1, self.__module1)
         self.__LW.place(250, 0)
         ## Bahnhof
-        self.__BH = Weiche2(self.__FrameWeichen, "Bahnhof", 2, 3, 2, 3, self.__module1, self.__module3)
+        self.__BH = Weiche2(self.__FrameWeichen, "Bahnhof", 2, 3, 3, 2, self.__module1, self.__module3)
         self.__BH.place(325, 0)
         ## Uebergang
         self.__BUE = Weiche(self.__FrameWeichen, "Uebergang", 4, 5, self.__module1)
@@ -176,7 +176,7 @@ class GUISteuerung(Tk):
         self.__neubau1 = LichtObjekt(self.__FrameLicht, "Neubau 1", 7, self.__module4)
         self.__neubau1.place(200, 200)
         ## Bauernhof
-        self.__bauernhof = LichtObjekt(self.__FrameLicht, "Bauernhof", 0, self.__module4)
+        self.__bauernhof = LichtObjekt(self.__FrameLicht, "Bauernhof", 0, self.__module5)
         self.__bauernhof.place(400, 200)
         
         self.__objects = [self.__cafe, self.__kirche, self.__flutlicht, self.__hammerschmiede, self.__2famhaus, self.__neubau1,
